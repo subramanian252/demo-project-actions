@@ -34,10 +34,10 @@ jobs:
           echo "running test"
           npm run test
       - name: upload test result
-        if: steps.test.outcome == 'failure'
+        if: failure() && steps.test.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
-          name: test-result
+          name: test-result-failed
           path: test.json
 
   build:
