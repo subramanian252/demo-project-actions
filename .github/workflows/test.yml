@@ -29,10 +29,12 @@ jobs:
           echo "installing dependencies"
           npm ci
       - name: Run test
+        id: test
         run: |
           echo "running test"
           npm run test
       - name: upload test result
+        if: steps.test.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-result
