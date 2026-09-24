@@ -32,6 +32,12 @@ jobs:
         run: |
           echo "running test"
           npm run test
+      - name: upload test result
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-result
+          path: test.json
+
   build:
     runs-on: ubuntu-latest
     needs: [lint, test]
@@ -42,7 +48,7 @@ jobs:
         run: |
           echo "installing dependencies"
           npm ci
-      - name: Run test
+      - name: Run build
         run: |
           echo "running build"
           npm run build
