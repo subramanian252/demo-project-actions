@@ -57,6 +57,7 @@ jobs:
 
   report:
     runs-on: ubuntu-latest
+    if: failure()
     needs: [build, lint, test]
     steps:
       - name: something went wrong
