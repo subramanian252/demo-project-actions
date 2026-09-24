@@ -1,0 +1,11 @@
+name: issues-echo
+on:
+  issues:
+    types: [opened, reopened, closed]
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo issue number
+        run: echo "complete issue ${{ toJSON(github.event.issue) }}"
+
