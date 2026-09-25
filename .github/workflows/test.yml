@@ -94,8 +94,7 @@ jobs:
           node-version: ${{matrix.node-version}}
       - name: Deploy
         run: |
-          echo "deploying"
-          npm run deploy
+          echo "deploying on ${{matrix.os}} with node ${{matrix.node-version}}"
 
   report:
     runs-on: ubuntu-latest
